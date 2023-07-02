@@ -1,0 +1,5 @@
+uvicorn[standard]==0.16.0
+fastapi==0.99.0
+csv23==0.3.3
+python-dateutil==2.8.2
+pytest==7.4.0
