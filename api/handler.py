@@ -7,7 +7,7 @@ from fastapi import FastAPI, Depends
 
 from const.sort import Sort
 from controller.datacontroller import DataController
-from migration.fileparser import FileParser
+from migration.directoryparser import DirectoryParser
 
 router = FastAPI(title=os.getenv("SWAGGER_TITLE", default="UNA-HEALTH"),
                  version=os.getenv("SWAGGER_VERSION", default=str(datetime.datetime.now())),
@@ -19,10 +19,8 @@ router = FastAPI(title=os.getenv("SWAGGER_TITLE", default="UNA-HEALTH"),
 
 
 async def get_controller():
-    one = FileParser(path=p.Path("1.csv"))
-    two = FileParser(path=p.Path("2.csv"))
-    three = FileParser(path=p.Path("3.csv"))
-    return DataController(entries=[one.read(), two.read(), three.read()])
+    import pdb; pdb.set_trace()
+    return DataController(entries=DirectoryParser(path=p.Path("assets")).read())
 
 
 @router.get("/api/v1/levels", description="Fetches all entries about a user")

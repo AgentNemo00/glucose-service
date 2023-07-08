@@ -21,6 +21,7 @@ class DirectoryParser:
             return ret
         files = [f for f in listdir(self.path) if isfile(join(self.path, f))]
         for file in files:
-            fp = FileParser(path=p.Path(file))
+            path = p.Path(join(self.path, file))
+            fp = FileParser(path=path)
             ret.append(fp.read())
         return ret
