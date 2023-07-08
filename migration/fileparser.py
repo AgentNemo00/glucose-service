@@ -10,7 +10,7 @@ from models.entry import Entry
 from models.user import User
 
 
-class Parser:
+class FileParser:
 
     def __init__(self, path: p.Path):
         self.path = path

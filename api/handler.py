@@ -1,5 +1,3 @@
-from typing import List, Optional
-
 from dateutil import parser
 import datetime
 import os
@@ -9,7 +7,7 @@ from fastapi import FastAPI, Depends
 
 from const.sort import Sort
 from controller.datacontroller import DataController
-from migration.parser import Parser
+from migration.fileparser import FileParser
 
 router = FastAPI(title=os.getenv("SWAGGER_TITLE", default="UNA-HEALTH"),
                  version=os.getenv("SWAGGER_VERSION", default=str(datetime.datetime.now())),
@@ -21,9 +19,9 @@ router = FastAPI(title=os.getenv("SWAGGER_TITLE", default="UNA-HEALTH"),
 
 
 async def get_controller():
-    one = Parser(path=p.Path("1.csv"))
-    two = Parser(path=p.Path("2.csv"))
-    three = Parser(path=p.Path("3.csv"))
+    one = FileParser(path=p.Path("1.csv"))
+    two = FileParser(path=p.Path("2.csv"))
+    three = FileParser(path=p.Path("3.csv"))
     return DataController(entries=[one.read(), two.read(), three.read()])
 
 
