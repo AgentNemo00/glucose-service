@@ -19,7 +19,6 @@ router = FastAPI(title=os.getenv("SWAGGER_TITLE", default="UNA-HEALTH"),
 
 
 async def get_controller():
-    import pdb; pdb.set_trace()
     return DataController(entries=DirectoryParser(path=p.Path("assets")).read())
 
 
