@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+  api-service:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    ports:
+      - "10001:10001"
